@@ -68,6 +68,10 @@ function write_vdW_grid(adsorbatename::String,
     epsilons, sigmas = _generate_epsilons_sigmas(framework, forcefields)
     
     # open grid file
+    if ! isdir(homedir() * "/PEGrid_output")
+       @printf("PEGrid_output folder will be created\n")
+       mkdir(homedir() * "/PEGrid_output" )
+    end
     if ! isdir(homedir() * "/PEGrid_output/" * forcefieldname)
        mkdir(homedir() * "/PEGrid_output/" * forcefieldname)
     end
